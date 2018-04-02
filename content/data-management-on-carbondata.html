@@ -608,7 +608,7 @@ It comes with the functionality to aggregate the records of a table by performin
 [ WHERE { &lt;filter_condition&gt; } ]
 </code></pre>
 <p>Overwrite insert data:</p>
-<pre><code>INSERT OVERWRITE &lt;CARBONDATA TABLE&gt; SELECT * FROM sourceTableName 
+<pre><code>INSERT OVERWRITE TABLE &lt;CARBONDATA TABLE&gt; SELECT * FROM sourceTableName 
 [ WHERE { &lt;filter_condition&gt; } ]
 </code></pre>
 <p>NOTE:</p>
@@ -623,7 +623,7 @@ It comes with the functionality to aggregate the records of a table by performin
 </code></pre>
 <pre><code>INSERT INTO table1 SELECT item1, item2, item3 FROM table2 where item2='xyz'
 </code></pre>
-<pre><code>INSERT OVERWRITE table1 SELECT * FROM TABLE2
+<pre><code>INSERT OVERWRITE TABLE table1 SELECT * FROM TABLE2
 </code></pre>
 <h2>
 <a id="update-and-delete" class="anchor" href="#update-and-delete" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>UPDATE AND DELETE</h2>
@@ -757,7 +757,10 @@ SELECT &lt;columns list excluding partition columns&gt; FROM another_user
 <h4>
 <a id="drop-partition" class="anchor" href="#drop-partition" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Drop Partition</h4>
 <p>This command drops the specified Hive partition only.</p>
-<pre><code>ALTER TABLE table_name DROP [IF EXISTS] (PARTITION part_spec, ...)
+<pre><code>ALTER TABLE table_name DROP [IF EXISTS] PARTITION (part_spec, ...)
+</code></pre>
+<p>Example:</p>
+<pre><code>ALTER TABLE locationTable DROP PARTITION (country = 'US');
 </code></pre>
 <h4>
 <a id="insert-overwrite" class="anchor" href="#insert-overwrite" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Insert OVERWRITE</h4>
